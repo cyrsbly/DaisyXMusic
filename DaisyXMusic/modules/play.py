@@ -264,7 +264,7 @@ async def hfmm(_, message):
     if status == "ON" or status == "on" or status == "On":
         lel = await message.reply("`Processing...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("Music Player Already Activated In This Chat")
+            await lel.edit("Music Player already activated in this Chat.")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
@@ -705,10 +705,6 @@ async def play(_, message: Message):
                         InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
                         InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
                     ],
-                    [
-                        InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                        InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
-                    ],
                     [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
                 ]
             )
@@ -748,7 +744,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music.".format(
                 message.from_user.mention()
             ),
         )
@@ -863,10 +859,6 @@ async def ytplay(_, message: Message):
                 InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
                 InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
             ],
-            [
-                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
-            ],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
         ]
     )
@@ -943,7 +935,7 @@ async def jiosaavn(client: Client, message_: Message):
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
+                        "<b>Add me as admin of yor group first.</b>",
                     )
                     return
 
@@ -953,7 +945,7 @@ async def jiosaavn(client: Client, message_: Message):
                         message_.chat.id, "I joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>Helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -1007,7 +999,7 @@ async def jiosaavn(client: Client, message_: Message):
             ],
             [
                 InlineKeyboardButton(
-                    text="Join Updates Channel", url=f"https://t.me/{updateschannel}"
+                    text="Follow", url=f"https://t.me/saibuboo"
                 )
             ],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
