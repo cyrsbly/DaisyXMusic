@@ -174,7 +174,7 @@ async def playlist(client, message):
 # ============================= Settings =========================================
 
 
-def updated_stats(chat, queue, vol=100):
+def updated_stats(chat, queue, vol=200):
     if chat.id in callsmusic.active_chats:
         # if chat.id in active_chats:
         stats = "Settings of **{}**".format(chat.title)
@@ -451,12 +451,12 @@ async def m_cb(b, cb):
                 pass
 
             await callsmusic.stop(chet_id)
-            await cb.message.edit("Successfully Left the Chat!")
+            await cb.message.edit("Successfully left the chat.")
         else:
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("Chat is not connected.", show_alert=True)
 
 
-@Client.on_message(command("play") & other_filters)
+@Client.on_message(command("p") & other_filters)
 async def play(_, message: Message):
     global que
     global useer
@@ -480,24 +480,24 @@ async def play(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        "<b>Remember to add helper to your channel</b>",
+                        "<b>Remember to add helper to your channel.</b>",
                     )
                     pass
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
+                        "<b>Add me as admin of yor group first.</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "I joined this group for playing music in VC"
+                        message.chat.id, "I joined this group to play music. Use `/p` to play."
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>Katarina Assitant joined your chat.</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -506,7 +506,6 @@ async def play(_, message: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add assistant to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
@@ -634,7 +633,7 @@ async def play(_, message: Message):
         try:
           results = YoutubeSearch(query, max_results=5).to_dict()
         except:
-          await lel.edit("Give me something to play")
+          await lel.edit("Give me something to play.")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
             toxxt = "**Select the song you want to play**\n\n"
@@ -1161,6 +1160,6 @@ async def lol_cb(b, cb):
         await b.send_photo(chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention} via Youtube Music 😎",
+            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention} via Youtube Music 😎""",
         )
         os.remove("final.png")
